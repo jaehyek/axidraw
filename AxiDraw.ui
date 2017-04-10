@@ -1,0 +1,300 @@
+<?xml version='1.0' encoding='utf-8'?>
+<interface>
+  <object class="ttk.Frame" id="mainwindow">
+    <property name="height">200</property>
+    <property name="padding">20</property>
+    <property name="width">200</property>
+    <layout>
+      <property name="column">0</property>
+      <property name="propagate">True</property>
+      <property name="row">0</property>
+      <property name="sticky">nesw</property>
+    </layout>
+    <child>
+      <object class="ttk.Button" id="ID_PEN_DOWN">
+        <property name="command">On_Click_Pen_Down</property>
+        <property name="text" translatable="yes">Pen Down</property>
+        <layout>
+          <property name="column">5</property>
+          <property name="propagate">True</property>
+          <property name="row">0</property>
+          <property name="sticky">s</property>
+        </layout>
+      </object>
+    </child>
+    <child>
+      <object class="ttk.Button" id="ID_PEN_UP">
+        <property name="command">On_Click_Pen_Up</property>
+        <property name="text" translatable="yes">Pen Up</property>
+        <layout>
+          <property name="column">5</property>
+          <property name="propagate">True</property>
+          <property name="row">1</property>
+        </layout>
+      </object>
+    </child>
+    <child>
+      <object class="ttk.Label" id="ID_LABEL_POSITION">
+        <property name="text" translatable="yes">Position:</property>
+        <layout>
+          <property name="column">1</property>
+          <property name="propagate">True</property>
+          <property name="row">2</property>
+        </layout>
+      </object>
+    </child>
+    <child>
+      <object class="tk.Message" id="ID_MSG_POSITION">
+        <property name="padx">13</property>
+        <property name="text" translatable="yes">65000,65000</property>
+        <property name="width">75</property>
+        <layout>
+          <property name="column">2</property>
+          <property name="columnspan">1</property>
+          <property name="ipadx">8</property>
+          <property name="propagate">True</property>
+          <property name="row">2</property>
+          <property name="rowspan">1</property>
+        </layout>
+      </object>
+    </child>
+    <child>
+      <object class="ttk.Label" id="ID_LABEL_DIST">
+        <property name="compound">right</property>
+        <property name="text" translatable="yes">Distance : 	</property>
+        <layout>
+          <property name="column">0</property>
+          <property name="propagate">True</property>
+          <property name="row">3</property>
+        </layout>
+      </object>
+    </child>
+    <child>
+      <object class="ttk.Button" id="ID_SAVE">
+        <property name="command">On_Click_Save</property>
+        <property name="text" translatable="yes">Save</property>
+        <layout>
+          <property name="column">2</property>
+          <property name="propagate">True</property>
+          <property name="row">5</property>
+        </layout>
+      </object>
+    </child>
+    <child>
+      <object class="ttk.Button" id="ID_CLOSE">
+        <property name="command">On_Click_Close</property>
+        <property name="text" translatable="yes">Close</property>
+        <layout>
+          <property name="column">3</property>
+          <property name="propagate">True</property>
+          <property name="row">5</property>
+        </layout>
+      </object>
+    </child>
+    <child>
+      <object class="ttk.Labelframe" id="ID_FRAME_MOVEMENT">
+        <property name="height">220</property>
+        <property name="padding">10</property>
+        <property name="text" translatable="yes">Movement</property>
+        <property name="width">200</property>
+        <layout>
+          <property name="column">0</property>
+          <property name="ipadx">2</property>
+          <property name="ipady">1</property>
+          <property name="padx">10</property>
+          <property name="pady">10</property>
+          <property name="propagate">True</property>
+          <property name="row">4</property>
+        </layout>
+        <child>
+          <object class="ttk.Button" id="ID_BACKLEFT">
+            <property name="command">On_Click_BackLeft</property>
+            <property name="text" translatable="yes">BackLeft</property>
+            <layout>
+              <property name="column">0</property>
+              <property name="propagate">True</property>
+              <property name="row">0</property>
+            </layout>
+          </object>
+        </child>
+        <child>
+          <object class="ttk.Button" id="ID_BACK">
+            <property name="command">On_Click_Back</property>
+            <property name="text" translatable="yes">Back</property>
+            <layout>
+              <property name="column">1</property>
+              <property name="propagate">True</property>
+              <property name="row">0</property>
+            </layout>
+          </object>
+        </child>
+        <child>
+          <object class="ttk.Button" id="ID_BACKRIGHT">
+            <property name="command">On_Click_BackRight</property>
+            <property name="text" translatable="yes">BackRight</property>
+            <layout>
+              <property name="column">2</property>
+              <property name="propagate">True</property>
+              <property name="row">0</property>
+            </layout>
+          </object>
+        </child>
+        <child>
+          <object class="ttk.Button" id="ID_LEFT">
+            <property name="command">On_Click_Left</property>
+            <property name="text" translatable="yes">Left</property>
+            <layout>
+              <property name="column">0</property>
+              <property name="propagate">True</property>
+              <property name="row">1</property>
+            </layout>
+          </object>
+        </child>
+        <child>
+          <object class="ttk.Button" id="ID_RIGHT">
+            <property name="command">On_Click_Right</property>
+            <property name="text" translatable="yes">Right</property>
+            <layout>
+              <property name="column">2</property>
+              <property name="propagate">True</property>
+              <property name="row">1</property>
+            </layout>
+          </object>
+        </child>
+        <child>
+          <object class="ttk.Button" id="ID_FORELEFT">
+            <property name="command">On_Click_ForeLeft</property>
+            <property name="text" translatable="yes">ForeLeft</property>
+            <layout>
+              <property name="column">0</property>
+              <property name="propagate">True</property>
+              <property name="row">2</property>
+            </layout>
+          </object>
+        </child>
+        <child>
+          <object class="ttk.Button" id="ID_FORWARD">
+            <property name="command">On_Click_Forward</property>
+            <property name="text" translatable="yes">Forward</property>
+            <layout>
+              <property name="column">1</property>
+              <property name="propagate">True</property>
+              <property name="row">2</property>
+            </layout>
+          </object>
+        </child>
+        <child>
+          <object class="ttk.Button" id="ID_FORERIGHT">
+            <property name="command">On_Click_ForeRight</property>
+            <property name="text" translatable="yes">ForeRight</property>
+            <layout>
+              <property name="column">2</property>
+              <property name="propagate">True</property>
+              <property name="row">2</property>
+            </layout>
+          </object>
+        </child>
+      </object>
+    </child>
+    <child>
+      <object class="ttk.Button" id="ID_BUTTON_DIST100">
+        <property name="command">On_Click_Dist_100</property>
+        <property name="text" translatable="yes">Dist 100	</property>
+        <layout>
+          <property name="column">2</property>
+          <property name="propagate">True</property>
+          <property name="row">3</property>
+        </layout>
+      </object>
+    </child>
+    <child>
+      <object class="ttk.Button" id="ID_BUTTON_DIST500">
+        <property name="command">On_Click_Dist_500</property>
+        <property name="text" translatable="yes">Dist 500</property>
+        <layout>
+          <property name="column">3</property>
+          <property name="propagate">True</property>
+          <property name="row">3</property>
+        </layout>
+      </object>
+    </child>
+    <child>
+      <object class="ttk.Button" id="ID_BUTTON_DIST1000">
+        <property name="command">On_Click_Dist_1000</property>
+        <property name="text" translatable="yes">Dist 1000</property>
+        <layout>
+          <property name="column">4</property>
+          <property name="propagate">True</property>
+          <property name="row">3</property>
+        </layout>
+      </object>
+    </child>
+    <child>
+      <object class="ttk.Button" id="ID_BUTTON_ORIGIN">
+        <property name="command">On_Click_Set_Origin</property>
+        <property name="text" translatable="yes">Set Origin</property>
+        <layout>
+          <property name="column">2</property>
+          <property name="propagate">True</property>
+          <property name="row">4</property>
+        </layout>
+      </object>
+    </child>
+    <child>
+      <object class="ttk.Button" id="ID_BUTTON_WIDTHHEIGHT">
+        <property name="command">On_Click_Set_WidthHeight</property>
+        <property name="text" translatable="yes">Set WidthHeight</property>
+        <layout>
+          <property name="column">3</property>
+          <property name="propagate">True</property>
+          <property name="row">4</property>
+        </layout>
+      </object>
+    </child>
+    <child>
+      <object class="ttk.Label" id="ID_LABEL_PHONE_WIDTHHEIGHT">
+        <property name="text" translatable="yes">Phone Width/Height  : </property>
+        <layout>
+          <property name="column">1</property>
+          <property name="propagate">True</property>
+          <property name="row">0</property>
+        </layout>
+      </object>
+    </child>
+    <child>
+      <object class="ttk.Entry" id="ID_ENTRY_WIDTHHEIGHT">
+        <property name="cursor">arrow</property>
+        <property name="takefocus">true</property>
+        <property name="text" translatable="yes">enter Width,Height</property>
+        <property name="textvariable">string:strWidthHeight</property>
+        <layout>
+          <property name="column">2</property>
+          <property name="propagate">True</property>
+          <property name="row">0</property>
+        </layout>
+      </object>
+    </child>
+    <child>
+      <object class="ttk.Button" id="ID_BUTTON_DIST20">
+        <property name="command">On_Click_Dist_20</property>
+        <property name="text" translatable="yes">Dist 20</property>
+        <layout>
+          <property name="column">1</property>
+          <property name="propagate">True</property>
+          <property name="row">3</property>
+        </layout>
+      </object>
+    </child>
+    <child>
+      <object class="ttk.Button" id="ID_BUTTON_CLICK">
+        <property name="command">On_Click_Click</property>
+        <property name="text" translatable="yes">click</property>
+        <layout>
+          <property name="column">5</property>
+          <property name="propagate">True</property>
+          <property name="row">4</property>
+        </layout>
+      </object>
+    </child>
+  </object>
+</interface>
