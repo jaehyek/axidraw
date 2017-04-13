@@ -79,8 +79,7 @@ class Application:
         self.listphoneRes = [int(aa) for aa in self.builder.tkvariables['strWidthHeight'].get().split(",") ]
 
         fout = open("Axidraw.conf", "w")
-        fout.write("AxiRes=" + ",".join([str(aa) for aa in self.listWidthHeight]) + "\n")
-        fout.write("PhoneRes=" + ",".join([str(aa) for aa in self.listphoneRes]) + "\n")
+        fout.write("listAxiRes=" + ",".join([str(aa) for aa in self.listWidthHeight]) + "\n")
         fout.close()
         print("Saved...")
         return

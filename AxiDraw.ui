@@ -11,9 +11,9 @@
       <property name="sticky">nesw</property>
     </layout>
     <child>
-      <object class="ttk.Button" id="ID_PEN_DOWN">
-        <property name="command">On_Click_Pen_Down</property>
-        <property name="text" translatable="yes">Pen Down</property>
+      <object class="ttk.Button" id="ID_PEN_UP">
+        <property name="command">On_Click_Pen_Up</property>
+        <property name="text" translatable="yes">Pen Up</property>
         <layout>
           <property name="column">5</property>
           <property name="propagate">True</property>
@@ -23,9 +23,9 @@
       </object>
     </child>
     <child>
-      <object class="ttk.Button" id="ID_PEN_UP">
-        <property name="command">On_Click_Pen_Up</property>
-        <property name="text" translatable="yes">Pen Up</property>
+      <object class="ttk.Button" id="ID_PEN_DOWN">
+        <property name="command">On_Click_Pen_Down</property>
+        <property name="text" translatable="yes">Pen Down</property>
         <layout>
           <property name="column">5</property>
           <property name="propagate">True</property>
@@ -248,29 +248,6 @@
           <property name="column">3</property>
           <property name="propagate">True</property>
           <property name="row">4</property>
-        </layout>
-      </object>
-    </child>
-    <child>
-      <object class="ttk.Label" id="ID_LABEL_PHONE_WIDTHHEIGHT">
-        <property name="text" translatable="yes">Phone Width/Height  : </property>
-        <layout>
-          <property name="column">1</property>
-          <property name="propagate">True</property>
-          <property name="row">0</property>
-        </layout>
-      </object>
-    </child>
-    <child>
-      <object class="ttk.Entry" id="ID_ENTRY_WIDTHHEIGHT">
-        <property name="cursor">arrow</property>
-        <property name="takefocus">true</property>
-        <property name="text" translatable="yes">enter Width,Height</property>
-        <property name="textvariable">string:strWidthHeight</property>
-        <layout>
-          <property name="column">2</property>
-          <property name="propagate">True</property>
-          <property name="row">0</property>
         </layout>
       </object>
     </child>
