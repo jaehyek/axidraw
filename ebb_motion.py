@@ -34,6 +34,7 @@
 For the reference of EBB command set, visit to http://evil-mad.github.io/EggBot/ebb.html
 """
 
+from __future__ import print_function
 import ebb_serial
 import time
 
@@ -41,6 +42,7 @@ class EBB():
     def __init__(self):
         self.port = ebb_serial.openPort()
         self.sleeptime_pen = 0.15
+        self.speedlimit = float(15000)/float(1000)    # 20000 steps/500ms
 
 
     def __del__(self):
@@ -170,8 +172,8 @@ class EBB():
             strOutput = ','.join( ['SM', str( duration ), str( deltaY ), str( deltaX )] ) + '\r'
             ebb_serial.command( self.port, strOutput)
 
-        # "SM" - Stepper Move
-        #  Command: SM,duration,axis1[,axis2]<CR>
+        # "SM"  Stepper Move
+        # Command: SM,duration,axis1[,axis2]<CR>
         # duration is an integer in the range from 1 to 16777215, giving time in milliseconds.
         # axis1 and axis2 are integers, each in the range from -16777215 to 16777215, giving movement distance in steps.
         # If both axis1 and axis2 are zero, then a delay of duration ms is executed.
@@ -180,6 +182,15 @@ class EBB():
 
 
     def doABMove( self, deltaA, deltaB, duration=500 ):
+        print("delta : %s, %s"%(deltaA, deltaB))
+        #check the speed limit .
+        timeA = abs(int(float(deltaA + deltaB)/float(self.speedlimit)))
+        timeB = abs(int(float(deltaA - deltaB)/float(self.speedlimit)))
+        if timeA >= duration : 
+            duration = timeA + 100
+        if timeB >= duration : 
+            duration = timeB + 100
+        
         self.getReady()
         # Issue command to move A/B axes as: "XM,<move_duration>,<axisA>,<axisB><CR>"
         # Then, <Axis1> moves by <AxisA> + <AxisB>, and <Axis2> as <AxisA> - <AxisB>

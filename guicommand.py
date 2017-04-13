@@ -76,13 +76,15 @@ class Application:
         exit()
 
     def On_Click_Save(self):
-        self.listphoneRes = [int(aa) for aa in self.builder.tkvariables['strWidthHeight'].get().split(",") ]
-
-        fout = open("Axidraw.conf", "w")
-        fout.write("listAxiRes=" + ",".join([str(aa) for aa in self.listWidthHeight]) + "\n")
-        fout.close()
-        print("Saved...")
-        return
+        #self.listphoneRes = [int(aa) for aa in self.builder.tkvariables['strWidthHeight'].get().split(",") ]
+        if len(self.listWidthHeight) == 2 :
+            fout = open("Axidraw.conf", "w")
+            fout.write("listAxiRes=" + ",".join([str(aa) for aa in self.listWidthHeight]) + "\n")
+            fout.close()
+            print("Saved...")
+            return
+        else:
+            print("invalid listWidthHeight")
 
     def On_Click_Pen_Down(self):
         self.ebb.getReady()

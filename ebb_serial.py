@@ -30,7 +30,7 @@
 # LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
 # OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 # SOFTWARE.
-
+from __future__ import print_function
 import serial
 
 def version():
@@ -118,6 +118,8 @@ def command( comPort, cmd ):
                 response = comPort.readline().decode('ascii').strip()
                 if response.startswith("OK"):
                     return
+                else:
+                    print (response)
                 # get new response to replace null response if necessary
                 nRetryCount += 1
                 response = ""
