@@ -35,6 +35,31 @@ class Application:
 
         # define the distance of movement
         self.dist = 500
+        self.config_penup = 16000
+        self.config_pendown = 12000
+        self.config_penrate = 750
+
+        # read config file and set .
+        try:
+            fconf = open("Axidraw.conf")
+            for line in fconf:
+                key, values = line.strip().split("=")
+                if len(key) == 0:
+                    continue
+                listvalues = values.split(",")
+                if len(listvalues) >= 2 :
+                    self.__dict__[key.strip()] = [int(aa) for aa in values.split(",")]
+                else:
+                    self.__dict__[key.strip()] = int(listvalues[0])
+        except:
+            pass
+
+        self.configPenUpDown()
+        self.builder.tkvariables['PenConfigup'].set(self.config_penup)
+        self.builder.tkvariables['PenConfigdown'].set(self.config_pendown)
+
+        self.builder.tkvariables['msg_WidthHeight'].set("(" + ",".join([str(aa) for aa in self.listWidthHeight ] ) + ")")
+
 
 
         #4. Connect callbacks
@@ -54,6 +79,11 @@ class Application:
             'On_Click_Forward':self.On_Click_Forward,
             'On_Click_ForeRight':self.On_Click_ForeRight,
 
+            'On_Click_Move_Origin': self.On_Click_Move_Origin,
+            'On_Click_Move_Width': self.On_Click_Move_Width,
+            'On_Click_Move_WidthHeight': self.On_Click_Move_WidthHeight,
+            'On_Click_Move_Height': self.On_Click_Move_Height,
+
             'On_Click_Dist_20': self.On_Click_Dist_20,
             'On_Click_Dist_100': self.On_Click_Dist_100,
             'On_Click_Dist_500': self.On_Click_Dist_500,
@@ -62,9 +92,18 @@ class Application:
             'On_Click_Set_Origin': self.On_Click_Set_Origin,
             'On_Click_Set_WidthHeight': self.On_Click_Set_WidthHeight,
             'On_Click_Click': self.On_Click_Click
+
+
         }
         builder.connect_callbacks(callbacks)
         self.setMsgCurrentPosition()
+
+    def configPenUpDown(self):
+        self.ebb.configServo(4, self.config_pendown)
+        self.ebb.configServo(5, self.config_penup)
+        self.ebb.configServo(11, self.config_penrate)
+        self.ebb.configServo(12, self.config_penrate)
+
 
     def setMsgCurrentPosition(self):
         self.listpos = self.ebb.getStepPosition(False)
@@ -80,6 +119,8 @@ class Application:
         if len(self.listWidthHeight) == 2 :
             fout = open("Axidraw.conf", "w")
             fout.write("listAxiRes=" + ",".join([str(aa) for aa in self.listWidthHeight]) + "\n")
+            fout.write("config_penup=%s\n" % self.config_penup)
+            fout.write("config_pendown=%s\n" % self.config_pendown)
             fout.close()
             print("Saved...")
             return
@@ -88,11 +129,24 @@ class Application:
 
     def On_Click_Pen_Down(self):
         self.ebb.getReady()
+        config_penup = self.builder.tkvariables['PenConfigup'].get()
+        config_pendown = self.builder.tkvariables['PenConfigdown'].get()
+        if config_penup != self.config_penup or config_pendown != self.config_pendown :
+            self.config_penup = config_penup
+            self.config_pendown = config_pendown
+            self.configPenUpDown()
         self.ebb.sendPenDown()
         return
 
     def On_Click_Pen_Up(self):
         self.ebb.getReady()
+        config_penup = self.builder.tkvariables['PenConfigup'].get()
+        config_pendown = self.builder.tkvariables['PenConfigdown'].get()
+        if config_penup != self.config_penup or config_pendown != self.config_pendown :
+            self.config_penup = config_penup
+            self.config_pendown = config_pendown
+            self.configPenUpDown()
+
         self.ebb.sendPenUp()
         return
 
@@ -152,13 +206,35 @@ class Application:
         self.dist = 1000
         return
 
+    def MoveABSCoordinate(self, x, y):
+        relatedX = x - self.listpos[0]
+        relatedY = y - self.listpos[1]
+        self.ebb.doABMove(relatedX, relatedY)
+        self.setMsgCurrentPosition()
+
+    def On_Click_Move_Origin(self):
+        self.MoveABSCoordinate(0,0)
+
+    def On_Click_Move_Width(self):
+        self.MoveABSCoordinate(self.listWidthHeight[0], 0)
+
+    def On_Click_Move_WidthHeight(self):
+        self.MoveABSCoordinate(self.listWidthHeight[0], self.listWidthHeight[1])
+
+    def On_Click_Move_Height(self):
+        self.MoveABSCoordinate(0, self.listWidthHeight[1])
+
     def On_Click_Set_Origin(self):
         self.ebb.getReset()
+        self.config_penup = self.builder.tkvariables['PenConfigup'].get()
+        self.config_pendown = self.builder.tkvariables['PenConfigdown'].get()
+        self.configPenUpDown()
         self.setMsgCurrentPosition()
         return
 
     def On_Click_Set_WidthHeight(self):
         self.listWidthHeight = self.ebb.getStepPosition(False)
+        self.builder.tkvariables['msg_WidthHeight'].set( ",".join([str(aa) for aa in self.listWidthHeight]) )
         return
 
     def On_Click_Click(self):

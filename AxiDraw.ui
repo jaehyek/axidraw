@@ -13,11 +13,14 @@
     <child>
       <object class="ttk.Button" id="ID_PEN_UP">
         <property name="command">On_Click_Pen_Up</property>
+        <property name="compound">bottom</property>
         <property name="text" translatable="yes">Pen Up</property>
         <layout>
-          <property name="column">5</property>
+          <property name="column">1</property>
+          <property name="ipadx">0</property>
           <property name="propagate">True</property>
           <property name="row">0</property>
+          <property name="rowspan">1</property>
           <property name="sticky">s</property>
         </layout>
       </object>
@@ -27,7 +30,7 @@
         <property name="command">On_Click_Pen_Down</property>
         <property name="text" translatable="yes">Pen Down</property>
         <layout>
-          <property name="column">5</property>
+          <property name="column">1</property>
           <property name="propagate">True</property>
           <property name="row">1</property>
         </layout>
@@ -35,11 +38,12 @@
     </child>
     <child>
       <object class="ttk.Label" id="ID_LABEL_POSITION">
-        <property name="text" translatable="yes">Position:</property>
+        <property name="text" translatable="yes">Current Position:</property>
         <layout>
           <property name="column">1</property>
           <property name="propagate">True</property>
-          <property name="row">2</property>
+          <property name="row">4</property>
+          <property name="sticky">e</property>
         </layout>
       </object>
     </child>
@@ -53,19 +57,20 @@
           <property name="columnspan">1</property>
           <property name="ipadx">8</property>
           <property name="propagate">True</property>
-          <property name="row">2</property>
+          <property name="row">4</property>
           <property name="rowspan">1</property>
         </layout>
       </object>
     </child>
     <child>
-      <object class="ttk.Label" id="ID_LABEL_DIST">
+      <object class="ttk.Label" id="ID_LABEL_WIDTH_HEIGHT">
         <property name="compound">right</property>
-        <property name="text" translatable="yes">Distance : 	</property>
+        <property name="text" translatable="yes">Width/Height  :  </property>
         <layout>
-          <property name="column">0</property>
+          <property name="column">3</property>
           <property name="propagate">True</property>
-          <property name="row">3</property>
+          <property name="row">4</property>
+          <property name="sticky">e</property>
         </layout>
       </object>
     </child>
@@ -76,7 +81,7 @@
         <layout>
           <property name="column">2</property>
           <property name="propagate">True</property>
-          <property name="row">5</property>
+          <property name="row">14</property>
         </layout>
       </object>
     </child>
@@ -87,7 +92,7 @@
         <layout>
           <property name="column">3</property>
           <property name="propagate">True</property>
-          <property name="row">5</property>
+          <property name="row">14</property>
         </layout>
       </object>
     </child>
@@ -104,7 +109,7 @@
           <property name="padx">10</property>
           <property name="pady">10</property>
           <property name="propagate">True</property>
-          <property name="row">4</property>
+          <property name="row">5</property>
         </layout>
         <child>
           <object class="ttk.Button" id="ID_BACKLEFT">
@@ -203,7 +208,7 @@
         <layout>
           <property name="column">2</property>
           <property name="propagate">True</property>
-          <property name="row">3</property>
+          <property name="row">5</property>
         </layout>
       </object>
     </child>
@@ -214,7 +219,7 @@
         <layout>
           <property name="column">3</property>
           <property name="propagate">True</property>
-          <property name="row">3</property>
+          <property name="row">5</property>
         </layout>
       </object>
     </child>
@@ -225,7 +230,7 @@
         <layout>
           <property name="column">4</property>
           <property name="propagate">True</property>
-          <property name="row">3</property>
+          <property name="row">5</property>
         </layout>
       </object>
     </child>
@@ -234,9 +239,9 @@
         <property name="command">On_Click_Set_Origin</property>
         <property name="text" translatable="yes">Set Origin</property>
         <layout>
-          <property name="column">2</property>
+          <property name="column">1</property>
           <property name="propagate">True</property>
-          <property name="row">4</property>
+          <property name="row">6</property>
         </layout>
       </object>
     </child>
@@ -245,9 +250,9 @@
         <property name="command">On_Click_Set_WidthHeight</property>
         <property name="text" translatable="yes">Set WidthHeight</property>
         <layout>
-          <property name="column">3</property>
+          <property name="column">2</property>
           <property name="propagate">True</property>
-          <property name="row">4</property>
+          <property name="row">6</property>
         </layout>
       </object>
     </child>
@@ -258,7 +263,7 @@
         <layout>
           <property name="column">1</property>
           <property name="propagate">True</property>
-          <property name="row">3</property>
+          <property name="row">5</property>
         </layout>
       </object>
     </child>
@@ -267,9 +272,233 @@
         <property name="command">On_Click_Click</property>
         <property name="text" translatable="yes">click</property>
         <layout>
-          <property name="column">5</property>
+          <property name="column">2</property>
+          <property name="propagate">True</property>
+          <property name="row">0</property>
+        </layout>
+      </object>
+    </child>
+    <child>
+      <object class="ttk.Labelframe" id="ID_FRAME_PEN_CONFIG">
+        <property name="height">200</property>
+        <property name="padding">10</property>
+        <property name="text" translatable="yes">Pen Height Config</property>
+        <property name="width">200</property>
+        <layout>
+          <property name="column">0</property>
+          <property name="propagate">True</property>
+          <property name="row">0</property>
+        </layout>
+        <child>
+          <object class="ttk.Label" id="ID_LABEL_PEN_CONFIG_UP">
+            <property name="text" translatable="yes">Pen Up : </property>
+            <layout>
+              <property name="column">0</property>
+              <property name="propagate">True</property>
+              <property name="row">0</property>
+            </layout>
+          </object>
+        </child>
+        <child>
+          <object class="ttk.Label" id="ID_LABEL_PEN_CONFIG_DOWN">
+            <property name="text" translatable="yes">Pen Down : </property>
+            <layout>
+              <property name="column">0</property>
+              <property name="propagate">True</property>
+              <property name="row">1</property>
+            </layout>
+          </object>
+        </child>
+        <child>
+          <object class="ttk.Entry" id="ID_ENTRY_PEN_CONFIG_UP">
+            <property name="text" translatable="yes">16000</property>
+            <property name="textvariable">int:PenConfigup</property>
+            <layout>
+              <property name="column">1</property>
+              <property name="propagate">True</property>
+              <property name="row">0</property>
+            </layout>
+          </object>
+        </child>
+        <child>
+          <object class="ttk.Entry" id="ID_ENTRY_PEN_CONFIG_DOWN">
+            <property name="text" translatable="yes">12000</property>
+            <property name="textvariable">int:PenConfigdown</property>
+            <layout>
+              <property name="column">1</property>
+              <property name="propagate">True</property>
+              <property name="row">1</property>
+            </layout>
+          </object>
+        </child>
+      </object>
+    </child>
+    <child>
+      <object class="ttk.Separator" id="Separator_1">
+        <property name="orient">horizontal</property>
+        <layout>
+          <property name="column">0</property>
+          <property name="ipadx">155</property>
+          <property name="propagate">True</property>
+          <property name="row">3</property>
+          <property name="rowspan">1</property>
+        </layout>
+      </object>
+    </child>
+    <child>
+      <object class="ttk.Separator" id="Separator_2">
+        <property name="orient">horizontal</property>
+        <layout>
+          <property name="column">1</property>
+          <property name="ipadx">60</property>
+          <property name="propagate">True</property>
+          <property name="row">3</property>
+        </layout>
+      </object>
+    </child>
+    <child>
+      <object class="ttk.Separator" id="Separator_3">
+        <property name="orient">horizontal</property>
+        <layout>
+          <property name="column">2</property>
+          <property name="ipadx">60</property>
+          <property name="propagate">True</property>
+          <property name="row">3</property>
+        </layout>
+      </object>
+    </child>
+    <child>
+      <object class="ttk.Separator" id="Separator_4">
+        <property name="orient">horizontal</property>
+        <layout>
+          <property name="column">3</property>
+          <property name="ipadx">60</property>
+          <property name="propagate">True</property>
+          <property name="row">3</property>
+        </layout>
+      </object>
+    </child>
+    <child>
+      <object class="ttk.Separator" id="Separator_5">
+        <property name="orient">horizontal</property>
+        <layout>
+          <property name="column">4</property>
+          <property name="ipadx">50</property>
+          <property name="propagate">True</property>
+          <property name="row">3</property>
+        </layout>
+      </object>
+    </child>
+    <child>
+      <object class="ttk.Separator" id="Separator_6">
+        <property name="orient">horizontal</property>
+        <layout>
+          <property name="column">0</property>
+          <property name="ipadx">155</property>
+          <property name="propagate">True</property>
+          <property name="row">13</property>
+        </layout>
+      </object>
+    </child>
+    <child>
+      <object class="ttk.Separator" id="Separator_7">
+        <property name="orient">horizontal</property>
+        <layout>
+          <property name="column">1</property>
+          <property name="ipadx">60</property>
+          <property name="propagate">True</property>
+          <property name="row">13</property>
+        </layout>
+      </object>
+    </child>
+    <child>
+      <object class="ttk.Separator" id="Separator_8">
+        <property name="orient">horizontal</property>
+        <layout>
+          <property name="column">2</property>
+          <property name="ipadx">60</property>
+          <property name="propagate">True</property>
+          <property name="row">13</property>
+        </layout>
+      </object>
+    </child>
+    <child>
+      <object class="ttk.Separator" id="Separator_9">
+        <property name="orient">horizontal</property>
+        <layout>
+          <property name="column">3</property>
+          <property name="ipadx">60</property>
+          <property name="propagate">True</property>
+          <property name="row">13</property>
+        </layout>
+      </object>
+    </child>
+    <child>
+      <object class="ttk.Separator" id="Separator_10">
+        <property name="orient">horizontal</property>
+        <layout>
+          <property name="column">4</property>
+          <property name="ipadx">60</property>
+          <property name="propagate">True</property>
+          <property name="row">13</property>
+        </layout>
+      </object>
+    </child>
+    <child>
+      <object class="ttk.Button" id="ID_BUTTON_ORIGIN">
+        <property name="command">On_Click_Move_Origin</property>
+        <property name="text" translatable="yes">(0,0)</property>
+        <layout>
+          <property name="column">4</property>
+          <property name="propagate">True</property>
+          <property name="row">6</property>
+        </layout>
+      </object>
+    </child>
+    <child>
+      <object class="ttk.Button" id="ID_BUTTON_WIDTH_0">
+        <property name="command">On_Click_Move_Width</property>
+        <property name="text" translatable="yes">(W, 0)</property>
+        <layout>
+          <property name="column">4</property>
+          <property name="propagate">True</property>
+          <property name="row">7</property>
+        </layout>
+      </object>
+    </child>
+    <child>
+      <object class="ttk.Button" id="ID_BUTTON_WIDTH_HEIGHT">
+        <property name="command">On_Click_Move_WidthHeight</property>
+        <property name="text" translatable="yes">(W,H)</property>
+        <layout>
+          <property name="column">4</property>
+          <property name="propagate">True</property>
+          <property name="row">8</property>
+        </layout>
+      </object>
+    </child>
+    <child>
+      <object class="ttk.Button" id="ID_BUTTON_0_HEIGHT">
+        <property name="command">On_Click_Move_Height</property>
+        <property name="text" translatable="yes">(0,H)</property>
+        <layout>
+          <property name="column">4</property>
+          <property name="propagate">True</property>
+          <property name="row">12</property>
+        </layout>
+      </object>
+    </child>
+    <child>
+      <object class="tk.Message" id="ID_MSG_WIDTH_HEIGHT">
+        <property name="text" translatable="yes">(0,0)</property>
+        <property name="textvariable">string:msg_WidthHeight</property>
+        <property name="width">100</property>
+        <layout>
+          <property name="column">4</property>
+          <property name="ipadx">20</property>
           <property name="propagate">True</property>
           <property name="row">4</property>
+          <property name="sticky">w</property>
         </layout>
       </object>
     </child>

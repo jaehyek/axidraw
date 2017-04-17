@@ -197,3 +197,18 @@ class EBB():
         if (self.port is not None):
             strOutput = ','.join( ['XM', str( duration ), str( deltaA ), str( deltaB )] ) + '\r'
             ebb_serial.command( self.port, strOutput)
+
+    def configServo(self, value1, value2):
+        if ((0 < value1 < 255) == False ) :
+            print("value1 is invalid ")
+            return
+        if ((0< value2 < 65535) == False ) :
+            print("value2 is invalid ")
+            return
+
+        self.getReady()
+        if (self.port is not None):
+            strOutput = ','.join(['SC', str(value1), str(value2)]) + '\r'
+            ebb_serial.command(self.port, strOutput)
+
+
