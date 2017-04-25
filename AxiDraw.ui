@@ -51,7 +51,8 @@
       <object class="tk.Message" id="ID_MSG_POSITION">
         <property name="padx">13</property>
         <property name="text" translatable="yes">65000,65000</property>
-        <property name="width">75</property>
+        <property name="textvariable">string:msg_CurrPosition</property>
+        <property name="width">100</property>
         <layout>
           <property name="column">2</property>
           <property name="columnspan">1</property>
@@ -445,7 +446,7 @@
       </object>
     </child>
     <child>
-      <object class="ttk.Button" id="ID_BUTTON_ORIGIN">
+      <object class="ttk.Button" id="ID_BUTTON_ORIGIN_1">
         <property name="command">On_Click_Move_Origin</property>
         <property name="text" translatable="yes">(0,0)</property>
         <layout>

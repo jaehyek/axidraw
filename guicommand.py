@@ -31,7 +31,7 @@ class Application:
         self.ebb = ebb_motion.EBB()
         self.ebb.sendEnableMotors(1)
         self.listpos = self.ebb.getStepPosition(False)
-        self.listWidthHeight = [0,0]
+        self.listAxiRes = [0,0]
 
         # define the distance of movement
         self.dist = 500
@@ -58,7 +58,7 @@ class Application:
         self.builder.tkvariables['PenConfigup'].set(self.config_penup)
         self.builder.tkvariables['PenConfigdown'].set(self.config_pendown)
 
-        self.builder.tkvariables['msg_WidthHeight'].set("(" + ",".join([str(aa) for aa in self.listWidthHeight ] ) + ")")
+        self.builder.tkvariables['msg_WidthHeight'].set("(" + ",".join([str(aa) for aa in self.listAxiRes ] ) + ")")
 
 
 
@@ -107,8 +107,7 @@ class Application:
 
     def setMsgCurrentPosition(self):
         self.listpos = self.ebb.getStepPosition(False)
-        self.MsgPosition.config(text=",".join([str(aa) for aa in self.listpos]))
-
+        self.builder.tkvariables['msg_CurrPosition'].set("(" + ",".join([str(aa) for aa in self.listpos]) + ")")
 
     def On_Click_Close(self):
         print("closing....")
@@ -116,16 +115,16 @@ class Application:
 
     def On_Click_Save(self):
         #self.listphoneRes = [int(aa) for aa in self.builder.tkvariables['strWidthHeight'].get().split(",") ]
-        if len(self.listWidthHeight) == 2 :
+        if len(self.listAxiRes) == 2 :
             fout = open("Axidraw.conf", "w")
-            fout.write("listAxiRes=" + ",".join([str(aa) for aa in self.listWidthHeight]) + "\n")
+            fout.write("listAxiRes=" + ",".join([str(aa) for aa in self.listAxiRes]) + "\n")
             fout.write("config_penup=%s\n" % self.config_penup)
             fout.write("config_pendown=%s\n" % self.config_pendown)
             fout.close()
             print("Saved...")
             return
         else:
-            print("invalid listWidthHeight")
+            print("invalid listAxiRes")
 
     def On_Click_Pen_Down(self):
         self.ebb.getReady()
@@ -216,13 +215,13 @@ class Application:
         self.MoveABSCoordinate(0,0)
 
     def On_Click_Move_Width(self):
-        self.MoveABSCoordinate(self.listWidthHeight[0], 0)
+        self.MoveABSCoordinate(self.listAxiRes[0], 0)
 
     def On_Click_Move_WidthHeight(self):
-        self.MoveABSCoordinate(self.listWidthHeight[0], self.listWidthHeight[1])
+        self.MoveABSCoordinate(self.listAxiRes[0], self.listAxiRes[1])
 
     def On_Click_Move_Height(self):
-        self.MoveABSCoordinate(0, self.listWidthHeight[1])
+        self.MoveABSCoordinate(0, self.listAxiRes[1])
 
     def On_Click_Set_Origin(self):
         self.ebb.getReset()
@@ -233,8 +232,8 @@ class Application:
         return
 
     def On_Click_Set_WidthHeight(self):
-        self.listWidthHeight = self.ebb.getStepPosition(False)
-        self.builder.tkvariables['msg_WidthHeight'].set( ",".join([str(aa) for aa in self.listWidthHeight]) )
+        self.listAxiRes = self.ebb.getStepPosition(False)
+        self.builder.tkvariables['msg_WidthHeight'].set( ",".join([str(aa) for aa in self.listAxiRes]) )
         return
 
     def On_Click_Click(self):

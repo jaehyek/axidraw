@@ -119,7 +119,8 @@ def command( comPort, cmd ):
                 if response.startswith("OK"):
                     return
                 else:
-                    print (response)
+                    # print (response)
+                    pass
                 # get new response to replace null response if necessary
                 nRetryCount += 1
                 response = ""
