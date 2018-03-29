@@ -31,6 +31,8 @@
 # OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 # SOFTWARE.
 from __future__ import print_function
+
+# 다음을 실행하기 전에  >pip install pyserial 을 수행할 것.
 import serial
 
 def version():
